@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="Pictures/explore-removebg-preview2.png">
+<title>Log In</title>
+<style>
+ body{
+    background-color: #081b29;
+}
+.fullcontainer{
+border: 2px solid #0ef;
+width: 1000px;
+height: 500px;
+margin-top: 100px;
+margin-left: 250px;
+background-color: #081b29;
+box-shadow: 0 0 25px #0ef
+}
+/*Login Css*/
+.LogIncontainer {
+    margin-top: 120px;
+    margin-left:  100px;
+    width: 18rem;
+    border-radius: 15px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background: linear-gradient(45deg, #081b29, #0ef);
+  }
+  .LogIncontainer h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .LogIncontainer label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  .LogIncontainer input[type="text"],
+  .LogIncontainer input[type="password"] {
+    width: 80%;
+    padding: 10px;
+    border: 1px solid #081b29;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+  .LogIncontainer input[type="submit"] {
+    background-color:#0ef;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    width: 6rem;
+  }
+  .LogIncontainer input[type="submit"]:hover {
+    background-color :#081b29;
+  }
+  /*signIn css*/
+.SignIncontainer {
+margin-left: 450px;
+width: 18rem;
+border-radius: 15px;
+padding: 20px;
+margin-top: -260px;
+background: linear-gradient(45deg, #081b29, #0ef);
+border: 1px solid #0ef;
+background-color: #0ef;
+}
+.SignIncontainer h2 {
+text-align: center;
+margin-bottom: 5px;
+margin-top:0px;
+}
+.SignIncontainer label {
+display: block;
+margin-bottom: 10px;
+}
+.SignIncontainer input[type="text"],
+.SignIncontainer input[type="password"] {
+width: 80%;
+padding: 10px;
+border: 1px solid black;
+border-radius: 5px;
+margin-bottom: 20px;
+}
+.SignIncontainer input[type="submit"] {
+background-color: #0ef;
+color: white;
+padding: 10px 20px;
+border: none;
+border-radius: 15px;
+cursor: pointer;
+width: 6rem;
+}
+.SignIncontainer input[type="submit"]:hover {
+background-color: #081b29;
+}
+/*OR css*/
+.or{
+text-align: center;
+color: white;
+}   
+  </style>
+<script>
+let currentUser;
+let user1, user1psswrd;
+let user2, user2psswrd;
+let user3, user3psswrd;
+let user4, user4psswrd;
+let user5, user5psswrd;
+
+function initializeUsers() {
+    user1 = "Rome";
+    user1psswrd = "Rome123";
+    user2 = "Admin";
+    user2psswrd = "Admin123";
+    user3 = user3psswrd = ''; // Initialize user3
+    user4 = user4psswrd = ''; // Initialize user4
+    user5 = user5psswrd = ''; // Initialize user5
+    currentUser = 1; // Start with user1
+}
+
+function LogInfunction() {
+    let username = document.getElementById('username');
+    let password= document.getElementById('password');
+
+    if (
+        (username.value === user1 && password.value === user1psswrd) ||
+        (username.value === user2 && password.value === user2psswrd) ||
+        (username.value === user3 && password.value === user3psswrd) ||
+        (username.value === user4 && password.value === user4psswrd) ||
+        (username.value === user5 && password.value === user5psswrd)
+    ){
+        alert('Login successful');
+        //  Redirect to another page
+        window.location.href = 'myweb.html';
+    } else {
+        alert('Invalid Username or Password');
+    }
+}
+
+function SignUpfunction() {
+    let newUsername = document.getElementById('newUsername');
+    let newPassword = document.getElementById('newPassword');
+    let email = document.getElementById('email');
+
+    if (currentUser === 1) {
+        user3 = newUsername.value;
+        user3psswrd = newPassword.value;
+        currentUser = 2; // Move to user2 after signup for user3
+    } else if (currentUser === 2) {
+        user4 = newUsername.value;
+        user4psswrd = newPassword.value;
+        currentUser = 3; // Move to user3 after signup for user4
+    } else if (currentUser === 3) {
+        user5 = newUsername.value;
+        user5psswrd = newPassword.value;
+        currentUser = 4; // Move to user4 after signup for user5
+    }
+
+    alert('Account Successfully created!');
+    document.getElementById('newUsername').value = '';
+    document.getElementById('newPassword').value = '';
+    document.getElementById('email').value = '';
+}
+
+function clearTextboxes() {
+    document.getElementById('username').value = '';
+    document.getElementById('password').value = '';
+    document.getElementById('newUsername').value = '';
+    document.getElementById('newPassword').value = '';
+    document.getElementById('email').value = '';
+}
+
+// Initialize users and set current user to user1
+initializeUsers();
+
+// Trigger the clearTextboxes function when the page unloads
+window.onunload = clearTextboxes;
+</script>
+</head>
+<body>
+  <div class="fullcontainer">
+    <div class="LogIncontainer">
+      <h2>Login</h2>
+    <center>
+     <input type="text" id="username" placeholder="Username"/>
+    <input type="text" id="password" placeholder="Password"/>
+    
+      <input type="submit" value="Continue" onclick="LogInfunction()"/>
+    </center>  
+      
+         </div>
+     
+     
+    <center>
+      <div class="SignIncontainer">
+     <h2>Sign up</h2>
+      <input type="text" id="newUsername" placeholder="Username" />
+   <input type="text" id="newPassword" placeholder="Password" />
+     <input type="text" id="email" placeholder="Email Address" />
+      <input type="submit" value="Create" onclick="SignUpfunction()" />
+    </center>
+      </div>
+      
+ </div>
+</body>
+</html>

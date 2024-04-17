@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cashier</title>
+</head>
+<style>
+  body{
+    background: #081b29;
+  }
+  .container{
+margin:0px;
+background: rgba(255,255,255,0.5);
+-webkit-backdrop-filter: blur(10px);
+backdrop-filter: blur(10px);
+border: 1px solid rgba(255,255,255,0.25);
+width:1000px;
+border-radius: 50px;
+  }
+  .addItemBtn{
+    margin: 30px;
+    border-radius: 10px;
+    width: 150px;
+    font-size: 17px;
+  }
+  .addItemBtn:hover{
+    background-color: khaki;
+  }
+.btns{
+  height: 50px;
+  width: 100px;
+  border-radius: 50px;
+  background-color: white;
+  font-size: 15px;
+}
+.btns:hover{
+  background-color: #0ef;
+}
+p{
+  font-size: 15px;
+}
+
+</style>
+<body>
+<center>
+<div class="container">
+  <h1>ADD TO CART</h1>
+
+  <!-- Buttons for adding items to the cart -->
+  <table>
+    <tr>
+      <td>
+       
+  <button class="addItemBtn" onclick="addItem('PACKAGE 1', 160.00)">PACKAGE 1 (₱160.00)</button>
+  <button class="addItemBtn" onclick="addItem('PACKAGE 2', 180.00)">PACKAGE 2 (₱180.00)</button>
+  <button class="addItemBtn" onclick="addItem('PACKAGE 3', 150.00)">PACKAGE 3 (₱150.00)</button>
+  <button class="addItemBtn" onclick="addItem('PACKAGE 5', 200.00)">PACKAGE 4 (₱200.00)</button>
+</td>
+</tr>
+<tr>
+  <td>
+<button class="addItemBtn" onclick="addItem('PACKAGE 5', 140.00)">PACKAGE 5 (₱140.00)</button>
+<button class="addItemBtn" onclick="addItem('PACKAGE 6', 130.00)">PACKAGE 6 (₱130.00)</button>
+<button class="addItemBtn" onclick="addItem('PACKAGE 7', 120.00)">PACKAGE 7 (₱120.00)</button>
+<button class="addItemBtn" onclick="addItem('PACKAGE 8', 190.00)">PACKAGE 8 (₱190.00)</button>
+</td>
+</tr>
+<tr>
+  <td>
+<button class="addItemBtn" onclick="addItem('PACKAGE 9', 100.00)">PACKAGE 9 (₱100.00)</button>
+<button class="addItemBtn" onclick="addItem('PACKAGE 10', 170.00)">PACKAGE 10 (₱170.00)</button>
+<button class="addItemBtn" onclick="addItem('PACKAGE 11', 160.00)">PACKAGE 11 (₱160.00)</button>
+<button class="addItemBtn" onclick="addItem('PACKAGE 12', 150.00)">PACKAGE 12 (₱150.00)</button>
+</td>
+</tr>
+<tr>
+  <td>
+<button class="addItemBtn" onclick="addItem('PACKAGE 13', 190.00)">PACKAGE 13 (₱190.00)</button>
+<button class="addItemBtn" onclick="addItem('PACKAGE 14', 180.00)">PACKAGE 14 (₱180.00)</button>
+<button class="addItemBtn" onclick="addItem('PACKAGE 15', 130.00)">PACKAGE 15 (₱130.00)</button>
+<button class="addItemBtn" onclick="addItem('PACKAGE 16', 150.00)">PACKAGE 16 (₱150.00)</button>
+</td>
+</tr>
+<tr>
+  <td>
+<button class="addItemBtn" onclick="addItem('PACKAGE 17', 160.00)">PACKAGE 17 (₱160.00)</button>
+<button class="addItemBtn" onclick="addItem('PACKAGE 18', 180.00)">PACKAGE 18 (₱180.00)</button>
+<button class="addItemBtn" onclick="addItem('PACKAGE 19', 150.00)">PACKAGE 19 (₱150.00)</button>
+<button class="addItemBtn" onclick="addItem('PACKAGE 20', 200.00)">PACKAGE 19 (₱200.00)</button>
+</td>
+</tr>
+  </table>
+  <!-- Receipt section -->
+  <div id="receipt">
+    <h2>Reciept</h2>
+    <ul id="cartItems"></ul>
+    <p>Total: ₱<span id="total">0.00</span></p>
+  </div>
+  <div>
+    <button class ="btns" onclick="BUY()">ORDER NOW</button>
+
+  </div>
+</div>
+</center>
+
+<script>
+  // Function to add item to the cart
+  function addItem(itemName, itemPrice) {
+    // Create new item element
+    var cartItems = document.getElementById("cartItems");
+    var newItem = document.createElement("li");
+    newItem.textContent = itemName + " - ₱" + itemPrice.toFixed(2);
+    cartItems.appendChild(newItem);
+
+    // Update total price
+    var currentTotal = parseFloat(document.getElementById("total").textContent);
+    var newTotal = currentTotal + itemPrice;
+    document.getElementById("total").textContent = newTotal.toFixed(2);
+  }
+  function BUY(){
+    var totalElement = document.getElementById("total");
+    var amount = totalElement.innerText;
+
+    // Check if amount is empty or equals to "0.00"
+    if (amount === "0.00" || amount === "") {
+        alert('Purchase An Item First');
+        
+    } else { 
+        alert('Thank you for buying');
+        window.location.href = 'Shop.html';
+    }
+
+  } 
+</script>
+
+</body>
+</html>
